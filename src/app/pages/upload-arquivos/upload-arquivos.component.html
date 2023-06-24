@@ -1,0 +1,40 @@
+<div id="box-upload">
+<div class="container-upload">
+  <div class="head">
+    <div class="logo-qi">
+    <img routerLink="/" src="https://qiwise.com.br/sitepad-data/uploads/2023/04/qinsight-logo.png" alt="logo" >
+    </div>
+    <h1 class="titulo-logo">Qiwise</h1>
+    <div class="icone-user">
+      <fa-icon [icon]="faUser" class="icon-user"></fa-icon>
+    </div>
+  </div>
+
+  <div class="pagina">
+    <h2>Meus arquivos</h2>
+    <form>
+<label for="arquivo" class="escolher-arquivo">
+  <fa-icon [icon]="faFolderPlus" class="icone-env-arquiv">
+  </fa-icon></label>
+  <input type="file" (change)="getFile($event)" name="arquivo" id="arquivo"/>
+</form>
+
+<input type="button"  value="Carregar"  (click)="postData(acessToken, file)" class="carregar-arquivo"/>
+  </div>
+
+  <div class="tab-arquivos">
+     <table class="result-arquivos">
+     <tr *ngFor="let file of this.data.medias">
+     <td>
+      {{file.filename}}
+      <span class="inputs">
+      <input type="button" value="Conversar" class="btn-chat"/>
+      <input (click)="excluir(acessToken,(file._id.$oid))" type="button" value="Deletar" class="btn-delete"/>
+      </span>
+    </td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
